@@ -34,7 +34,14 @@ namespace UNFCYJDashboard.Controllers
         // GET: User
         public ActionResult Register()
         {
-            return View();
+            if (Session["Email"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpPost]
@@ -53,5 +60,35 @@ namespace UNFCYJDashboard.Controllers
             }
             return View(u);
         }
+
+        // GET: Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Admin u)
+        {
+            if (ModelState.IsValid)
+            {
+                using (CYJDashEntities dc = new CYJDashEntities())
+                {
+                    var lg = dc.Admins.Where(e => e.Email.Equals(u.Email) && e.Password.Equals(u.Password)).FirstOrDefault();
+                    if (lg != null)
+                    {
+                        return RedirectToAction("Register", "User");
+                    }
+                    else
+                    {
+                        Response.Write("<script> alsert('Invalid password')</script>");
+                    }
+                }
+            }
+            return View(u);
+        }
+
+        
     }
 }

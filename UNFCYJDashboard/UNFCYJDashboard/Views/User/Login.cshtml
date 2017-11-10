@@ -1,0 +1,53 @@
+﻿@model UNFCYJDashboard.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="navbar-header">
+        <ul>
+            <li>
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    <fieldset>
+                        <legend>CJY Login</legend>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        @if (@ViewBag.Message != null)
+                        {
+                            <div style="border: 1px solid red">
+                                @ViewBag.Message
+                            </div>
+                        }
+
+                        <table class="table">
+                            <tr>
+                                <td> @Html.LabelFor(a => a.Email) </td>
+                                <td> @Html.TextBoxFor(a => a.Email) </td>
+                                <td> @Html.ValidationMessageFor(a => a.Email) </td>
+                            
+                        
+                                <td> @Html.LabelFor(a => a.Password) </td>
+                                <td> @Html.PasswordFor(a => a.Password) </td>
+                                <td> @Html.ValidationMessageFor(a => a.Password) </td>
+                            
+                            
+                                <td></td>
+                                <td> <input type="submit" value="Login" /> </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                }
+
+            </li>
+        </ul>
+       
+    </div>
+</div>
+
