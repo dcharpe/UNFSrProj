@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using System.Web.SessionState;
 using UNFCYJDashboard.Models;
 
 
 
 namespace UNFCYJDashboard.Controllers
 {
- 
+
     public class UserController : Controller
     {
         //instantiates an object from the database
@@ -33,13 +31,31 @@ namespace UNFCYJDashboard.Controllers
             return View(query);
         }
 
+        // GET: /User/Dashboard
+
+        public ActionResult Dashboard()
+        {
+            var query = dc.Admins.ToList().Select(p => new Admin
+            {
+                //each attribute data that will be display
+                UserId = p.UserId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Email = p.Email,
+                Password = p.Password
+
+            });
+            return View(query);
+        }
+
         // GET: /User/Register
-       
+
         public ActionResult Register()
         {
+            
             return View();
-
-            /*if (Session["Email"] != null)
+            //cannot retain person's email
+            /*if (System.Web.HttpContext.Current.Session["Email"] != null)
             {
                 return View();
             }
@@ -68,7 +84,6 @@ namespace UNFCYJDashboard.Controllers
                         //ViewBag.Message = u.FirstName + " " + u.LastName + " has successfully registered!";
                   
                     }
-               
             }
             return View(u);
         }
@@ -76,6 +91,7 @@ namespace UNFCYJDashboard.Controllers
         // GET: /User/Login
         public ActionResult Login()
         {
+
             return View();
         }
         

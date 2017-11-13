@@ -98,7 +98,7 @@
                         <li>
                             <a href="#">
                                 <i class="material-icons">location_on</i>
-                                <p>Maps</p>
+                                <p>Settings</p>
                             </a>
                         </li>
                         <li>
@@ -107,11 +107,24 @@
                                 <p>Notifications</p>
                             </a>
                         </li>
+
+
                     </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group  is-empty">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="material-input"></span>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </form>
                 </div> <!-- ends side bar nav-->
             </div> <!-- ends pics on side bar nav -->
             <!-- End of Sidebar-->
             <!-- Top Nav Bar-->
+        <nav>
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -123,12 +136,14 @@
                  
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                
+                    <ul class="nav navbar-nav navbar-left">
                         <li>
                             @Html.ActionLink("Hello " + "Dorothy" + "!", "Index", "User", routeValues: null, htmlAttributes: new { title = "Index" })
                         </li>
                         
                     </ul>
+                   
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
@@ -144,19 +159,19 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#"></a>
+                                    <a href="#">Q4 report is due in 30 days</a>
                                 </li>
                                 <li>
-                                    <a href="#">You have 5 new tasks</a>
+                                    <a href="#">Dorothy's account was recently added</a>
                                 </li>
                                 <li>
-                                    <a href="#">You're now friend with Andrew</a>
+                                    <a href="#">Dorothy's account was currently updated</a>
                                 </li>
                                 <li>
                                     <a href="#">Another Notification</a>
                                 </li>
                                 <li>
-                                    <a href="#">Another One</a>
+                                    <a href="#"></a>
                                 </li>
                             </ul>
                         </li>
@@ -165,21 +180,28 @@
                                 <i class="material-icons">person</i>
                                 <p class="hidden-lg hidden-md">Profile</p>
                             </a>
+                            <ul class="dropdown-menu">
+                                
+                                
+                                <li>
+                                    <a href="#">Dorothy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#">Logout</a>
+                                </li>                              
+                            </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group  is-empty">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="material-input"></span>
-                        </div>
-                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                            <i class="material-icons">search</i>
-                            <div class="ripple-container"></div>
-                        </button>
-                    </form>
+                   
                 </div>
             </div>
-            </nav>
+        </nav>
             <!-- End Top Nav Bar-->
 
             <div>
