@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UNFCYJDashboard.Models;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
 
 namespace UNFCYJDashboard.Controllers
 {
+ 
     public class UserController : Controller
     {
+       
 
         //instantiates an object from the database
         CYJDashEntities dc = new CYJDashEntities();
@@ -30,33 +36,39 @@ namespace UNFCYJDashboard.Controllers
             return View(query);
         }
 
-
-        // GET: User
+        // GET: /User/Register
+       
         public ActionResult Register()
         {
+            
             if (Session["Email"] != null)
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Index", "User");
             }
         }
 
+        // POST: /User/Register
         [HttpPost]
+      
+        [ValidateAntiForgeryToken]
         public ActionResult Register(Admin u)
         {
             if (ModelState.IsValid)
             {
-                using (CYJDashEntities dc = new CYJDashEntities())
-                {
-                    dc.Admins.Add(u);
-                    dc.SaveChanges();
-                    ModelState.Clear();
-                    u = null;
-                    ViewBag.Message = u.FirstName + " " + u.LastName + " has successfully registered!";
-                }
+               
+                    using (CYJDashEntities dc = new CYJDashEntities())
+                    {
+                        dc.Admins.Add(u);
+                        dc.SaveChanges();
+                        ModelState.Clear();
+                        u = null;
+                        ViewBag.Message = u.FirstName + " " + u.LastName + " has successfully registered!";
+                    }
+               
             }
             return View(u);
         }
@@ -89,6 +101,8 @@ namespace UNFCYJDashboard.Controllers
             return View(u);
         }
 
-        
+       
+
+
     }
 }

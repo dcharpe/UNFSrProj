@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\n00618091\documents\visual studio 2017\Projects\UNFCYJDashboard\UNFCYJDashboard\Models\UCYJDashboard.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\DCharpe\Source\Repos\UNFSrProj\UNFCYJDashboard\UNFCYJDashboard\Models\UCYJDashboard.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -1,20 +1,17 @@
-﻿@model UNFCYJDashboard.Models.Admin
+﻿@model UNFCYJDashboard.Models.Admin 
 
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
-
-
 <div class="container-fluid">
     <div class="navbar-header">
         <ul>
             <li>
-                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
                 {
                     <fieldset>
-                        <legend>CJY Login</legend>
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
 
@@ -31,12 +28,10 @@
                                 <td> @Html.TextBoxFor(a => a.Email) </td>
                                 <td> @Html.ValidationMessageFor(a => a.Email) </td>
                             
-                        
                                 <td> @Html.LabelFor(a => a.Password) </td>
                                 <td> @Html.PasswordFor(a => a.Password) </td>
                                 <td> @Html.ValidationMessageFor(a => a.Password) </td>
-                            
-                            
+                           
                                 <td></td>
                                 <td> <input type="submit" value="Login" /> </td>
                                 <td></td>
@@ -46,8 +41,7 @@
                 }
 
             </li>
-        </ul>
-       
+        </ul> 
     </div>
 </div>
 
