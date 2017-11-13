@@ -3,13 +3,9 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_mytemplate.cshtml";
+    Layout = "~/Views/Shared/logintemplate.cshtml";
 }
 
-@if (Session["Email"] != null)
-{
-    <text> Welcome @Session["Email"].ToString()</text>
-}
 
 <p>
     @Html.ActionLink("Create New", "Create")

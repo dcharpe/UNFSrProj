@@ -4,9 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UNFCYJDashboard.Models;
-using System.Globalization;
-using System.Security.Claims;
-using System.Threading.Tasks;
+
 
 
 namespace UNFCYJDashboard.Controllers
@@ -14,8 +12,6 @@ namespace UNFCYJDashboard.Controllers
  
     public class UserController : Controller
     {
-       
-
         //instantiates an object from the database
         CYJDashEntities dc = new CYJDashEntities();
 
@@ -31,6 +27,7 @@ namespace UNFCYJDashboard.Controllers
                 LastName = p.LastName,
                 Email = p.Email,
                 Password = p.Password
+                
             });
             //return a complete record to the index view
             return View(query);
@@ -40,20 +37,20 @@ namespace UNFCYJDashboard.Controllers
        
         public ActionResult Register()
         {
-            
-            if (Session["Email"] != null)
+            return View();
+
+            /*if (Session["Email"] != null)
             {
                 return View();
             }
             else
             {
                 return RedirectToAction("Index", "User");
-            }
+            }*/
         }
 
         // POST: /User/Register
         [HttpPost]
-      
         [ValidateAntiForgeryToken]
         public ActionResult Register(Admin u)
         {
@@ -62,23 +59,27 @@ namespace UNFCYJDashboard.Controllers
                
                     using (CYJDashEntities dc = new CYJDashEntities())
                     {
+                    
+
                         dc.Admins.Add(u);
                         dc.SaveChanges();
                         ModelState.Clear();
                         u = null;
-                        ViewBag.Message = u.FirstName + " " + u.LastName + " has successfully registered!";
+                        //ViewBag.Message = u.FirstName + " " + u.LastName + " has successfully registered!";
+                  
                     }
                
             }
             return View(u);
         }
 
-        // GET: Login
+        // GET: /User/Login
         public ActionResult Login()
         {
             return View();
         }
-
+        
+        //POST: /USER/LOGIN
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(Admin u)
@@ -100,9 +101,5 @@ namespace UNFCYJDashboard.Controllers
             }
             return View(u);
         }
-
-       
-
-
     }
 }
